@@ -7,25 +7,25 @@
             <div class="column is-two-thirds">
               <!-- Left side -->
               <p class="title is-2">League Recorder</p>
-              <p class="subtitle is-5">Record Custom Game Statistics  </p>
+              <p class="subtitle is-5">Record Custom Game Statistics</p>
             </div>
             <div class="column has-centered-text">
               <!-- Right side -->
-              <router-link to="/" class="button is-large is-info block">
+              <router-link to="matches/" class="button is-large is-info block">
                 <span class="icon">
-                  <b-icon icon="search" />
+                  <b-icon icon="database-search" size="is-large" />
                 </span>
                 <span>Find your Game</span>
               </router-link>
-              <p class="subtitle is-6 block">
+              <p class="subtitle is-5 block">
                 Contribute to us via
                 <a
-                  class="tag is-small is-black"
+                  class="tag is-medium is-black"
                   href="https://github.com/Kuenaimaku/league-recorder"
                   target="_blank"
                 >
                   <span class="icon">
-                    <b-icon icon="github" pack="fab" />
+                    <b-icon icon="github-face"/>
                   </span>
                   <span>github</span>
                 </a>

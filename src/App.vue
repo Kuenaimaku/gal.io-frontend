@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <router-view />
+    <router-view id="view"/>
     <Footer />
   </div>
 </template>
@@ -20,11 +20,12 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  display: flex;
+  min-height: calc(100vh - 60px);
+  flex-direction: column;
+}
+#view{
+  flex: 1;
 }
 #nav {
   padding: 30px;

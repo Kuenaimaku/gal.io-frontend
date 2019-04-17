@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://kuenaimaku.com">
         <img
@@ -24,6 +24,8 @@
       <div class="navbar-start">
         <router-link to="/" class="navbar-item">Home</router-link>
         <router-link to="/matches" class="navbar-item">Matches</router-link>
+        <router-link to="/players" class="navbar-item">Player Statistics</router-link>
+        <router-link to="/champions" class="navbar-item">Champion Statistics</router-link>
       </div>
       <div class="navbar-end">
         <a class="navbar-item" @click="showLogin">Log in</a>

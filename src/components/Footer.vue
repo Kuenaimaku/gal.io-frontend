@@ -9,7 +9,7 @@
           target="_blank"
         >
           <span class="icon">
-            <b-icon icon="twitter" pack="fab" />
+            <b-icon icon="twitter" />
           </span>
         </a>
         <a
@@ -18,7 +18,7 @@
           target="_blank"
         >
           <span class="icon">
-            <b-icon icon="github" pack="fab" />
+            <b-icon icon="github-face" />
           </span>
         </a>
       </p>
@@ -34,6 +34,9 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-  padding-bottom: 3rem;
+	padding-bottom: 0rem;
+}
+a.button{
+  margin: 0rem 0.5rem;
 }
 </style>
