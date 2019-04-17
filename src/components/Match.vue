@@ -46,52 +46,6 @@
             </template>
         </b-table>
       </div>
-      <div class="column">
-        <b-table
-            :data="isEmpty ? [] : data"
-            :bordered="isBordered"
-            :striped="isStriped"
-            :narrowed="isNarrowed"
-            :hoverable="isHoverable"
-            :loading="isLoading"
-            :focusable="isFocusable"
-            :mobile-cards="hasMobileCards">
-
-            <template slot-scope="props">
-                <b-table-column field="id" label="ID" width="40" numeric>
-                    {{ props.row.id }}
-                </b-table-column>
-
-                <b-table-column field="summoner_name" label="Summoner">
-                    {{ props.row.summoner_name }}
-                </b-table-column>
-
-                <b-table-column field="last_name" label="Name">
-                    {{ props.row.common_name }}
-                </b-table-column>
-
-                <b-table-column field="role" label="Role" centered>
-                    <span class="tag is-success">
-                        {{ props.row.role }}
-                    </span>
-                </b-table-column>
-            </template>
-
-            <template slot="empty">
-                <section class="section">
-                    <div class="content has-text-grey has-text-centered">
-                        <p>
-                            <b-icon
-                                icon="emoticon-sad"
-                                size="is-large">
-                            </b-icon>
-                        </p>
-                        <p>Nothing here.</p>
-                    </div>
-                </section>
-            </template>
-        </b-table>
-      </div>
     </div>
 </template>
 
@@ -105,7 +59,6 @@
                 { 'id': 4, 'summoner_name': 'Pudash', 'common_name': 'Jason', 'role': 'Top' },
                 { 'id': 5, 'summoner_name': 'GlacialPuppy', 'common_name': 'Sean', 'role': 'Mid' },
             ]
-
             return {
                 data,
                 isEmpty: false,
@@ -120,6 +73,7 @@
         }
     }
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
