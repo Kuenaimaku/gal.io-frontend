@@ -24,8 +24,8 @@
       <div class="navbar-start">
         <router-link to="/" class="navbar-item">Home</router-link>
         <router-link to="/matches" class="navbar-item">Matches</router-link>
-        <router-link to="/players" class="navbar-item">Player Statistics</router-link>
-        <router-link to="/champions" class="navbar-item">Champion Statistics</router-link>
+        <router-link to="/players" class="navbar-item">Players</router-link>
+        <router-link to="/champions" class="navbar-item">Champions</router-link>
       </div>
       <div class="navbar-end">
         <a class="navbar-item" @click="showLogin">Log in</a>
