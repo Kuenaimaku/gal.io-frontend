@@ -55,7 +55,7 @@ export default {
   async mounted() {
     try{
       const res = await Api.players.fetchPlayers();
-      this.players = res.data;
+      this.players = res;
       this.loading = false;
     }
     catch (err){
