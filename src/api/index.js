@@ -1,7 +1,7 @@
 import axios from "axios";
 
 if (process.env.NODE_ENV === "development")
-	axios.defaults.baseURL = "app.local";
+	axios.defaults.baseURL = "https://localhost:44371/api/";
 else
 	axios.defaults.baseURL = "";
 

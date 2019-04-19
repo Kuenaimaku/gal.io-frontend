@@ -55,7 +55,8 @@ export default {
   methods: {
     async submit() {
       try {
-        console.log(this.summoner_name)
+        const res = await Api.players.validate(this.summoner_name);
+        console.log(res);
       } catch(err){
         console.log("Unknown Error");
       }
