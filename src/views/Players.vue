@@ -22,9 +22,19 @@
           ></Player>
         </section>
       </div>
+      <b-loading :active.sync="this.loading" :is-full-page=false></b-loading>
     </div>
     <div v-else>
-      <b-loading></b-loading>
+      <div class = "container">
+          <nav class="level">
+            <div class="level-item">
+              <figure class="image">
+                <img class="is-rounded" src="../assets/missing.png">
+              </figure>
+            </div>
+          </nav>
+        <b-loading :active.sync="this.loading" :is-full-page=false></b-loading>
+      </div>
     </div>
     <section id="addPlayer">
       <b-tooltip label="Add a New Player" animated position="is-left" type="is-info">
@@ -63,13 +73,29 @@ export default {
     }
   },
   methods:{
+    async fetchPlayers() {
+      try{
+        const res = await Api.players.fetchPlayers();
+        this.players = res;
+        this.loading = false;
+      }
+      catch (err){
+        console.log(err)
+      }
+    },
     showAddPlayer() {
 			this.$modal.open({
 				parent: this,
         component: AddPlayerModal,
-        width: '30vw'
+        width: '30vw',
+        hasModalCard: true,
+        events: {
+          close(p){
+            p.fetchPlayers();
+          }
+        }
 			});
-    }
+    } 
   },
   computed:{
     playerChunks(){

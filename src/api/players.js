@@ -33,6 +33,7 @@ export default {
 		});
 	},
 	async createPlayer(object) {
+		var data = object;
 		return await axios({
 			method: "PUT",
 			url: "/players",
@@ -40,7 +41,8 @@ export default {
 			data: {
 				name: object.name,
 				summonerName: object.summonerName,
-				notes: object.notes
+				notes: object.notes,
+				summonerDto: object.account
 			}
 		})
 		.then(response => {

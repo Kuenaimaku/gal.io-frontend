@@ -47,6 +47,7 @@ export default {
     methods:{
       async removePlayer(){
         const res = await Api.players.removePlayer(this.player.id);
+        await this.$parent.fetchPlayers();
       }
     }
 }
