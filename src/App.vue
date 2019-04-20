@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style lang="scss">
+html{
+  overflow-y:auto !important;
+}
 #app {
   display: flex;
   min-height: calc(100vh - 60px);

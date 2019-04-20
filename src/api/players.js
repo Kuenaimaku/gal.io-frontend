@@ -16,10 +16,26 @@ export default {
 			return error.response;
 		});
 	},
-	async validate(name) {
+	async searchPlayers(name) {
 		return await axios({
 			method: "GET",
 			url: "/players/" + name,
+			data: null
+		})
+		.then(response => {
+			if(response.data.id === null)
+				return null
+			return response.data;
+		})
+		.catch(function(error) {
+			console.error(error)
+			return error.response;
+		});
+	},
+	async validate(name) {
+		return await axios({
+			method: "GET",
+			url: "/players/validate/" + name,
 			data: null
 		})
 		.then(response => {

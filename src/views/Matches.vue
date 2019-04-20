@@ -61,7 +61,7 @@ export default {
 			this.$modal.open({
 				parent: this,
         component: AddMatchModal,
-        width: '70vw'
+        width: '80vw'
 			});
     }
   },

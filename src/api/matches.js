@@ -1,3 +1,4 @@
+import axios from "axios"
 export default {
 	async fetchMatches() {
 		return await { data: [{
@@ -26,5 +27,21 @@ export default {
 			]
 		}
 		]}
+	},
+	async getMatch(id) {
+		return await axios({
+			method: "GET",
+			url: "/matches/" + id,
+			data: null
+		})
+		.then(response => {
+			if(response.data.id === null)
+				return null
+			return response.data;
+		})
+		.catch(function(error) {
+			console.error(error)
+			return error.response;
+		});
 	}
 }
