@@ -5,7 +5,7 @@
         <div class="media-left">
           <figure class="image is-64x64">
             <img class="is-rounded"
-              src="https://bulma.io/images/placeholders/128x128.png"
+              v-bind:src="'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/profileicon/' + participant.summonerDto.profileIconId +'.png'"
               alt="Summoner Icon">
           </figure>
         </div>

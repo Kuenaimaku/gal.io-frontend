@@ -4,6 +4,7 @@
       <header class="modal-card-head">
           <p class="modal-card-title has-text-centered">Pick your Rosters</p>
       </header>
+      <form @submit.prevent="nextSection">
       <section class="modal-card-body">
         <div class="columns">
           <div class="column">
@@ -11,12 +12,14 @@
             <b-field grouped>
               <b-field horizontal expanded>
                   <b-autocomplete
+                    required
                     v-model="team1[0].name"
                     placeholder="BOOTYWIZARD42069"
                     :data="players"
                     :loading="isFetching"
                     field="name"
-                    @typing="getAsyncData">
+                    @typing="getAsyncData"
+                    @select="option => team1[0] = option">
                   <template slot-scope="props" style="margin-bottom:2rem">
                     <div class="media">
                         <div class="media-left">
@@ -46,12 +49,14 @@
             <b-field grouped>
               <b-field horizontal expanded>
                   <b-autocomplete
+                    required
                     v-model="team1[1].name"
                     placeholder="BOOTYWIZARD42069"
                     :data="players"
                     :loading="isFetching"
                     field="name"
-                    @typing="getAsyncData">
+                    @typing="getAsyncData"
+                    @select="option => team1[1] = option">
                   <template slot-scope="props" style="margin-bottom:2rem">
                     <div class="media">
                         <div class="media-left">
@@ -81,12 +86,14 @@
             <b-field grouped>
               <b-field horizontal expanded>
                   <b-autocomplete
+                    required
                     v-model="team1[2].name"
                     placeholder="BOOTYWIZARD42069"
                     :data="players"
                     :loading="isFetching"
                     field="name"
-                    @typing="getAsyncData">
+                    @typing="getAsyncData"
+                    @select="option => team1[2] = option">
                   <template slot-scope="props" style="margin-bottom:2rem">
                     <div class="media">
                         <div class="media-left">
@@ -116,12 +123,14 @@
             <b-field grouped>
               <b-field horizontal expanded>
                   <b-autocomplete
+                    required
                     v-model="team1[3].name"
                     placeholder="BOOTYWIZARD42069"
                     :data="players"
                     :loading="isFetching"
                     field="name"
-                    @typing="getAsyncData">
+                    @typing="getAsyncData"
+                    @select="option => team1[3] = option">
                   <template slot-scope="props" style="margin-bottom:2rem">
                     <div class="media">
                         <div class="media-left">
@@ -151,12 +160,14 @@
             <b-field grouped>
               <b-field horizontal expanded>
                   <b-autocomplete
+                    required
                     v-model="team1[4].name"
                     placeholder="BOOTYWIZARD42069"
                     :data="players"
                     :loading="isFetching"
                     field="name"
-                    @typing="getAsyncData">
+                    @typing="getAsyncData"
+                    @select="option => team1[4] = option">
                   <template slot-scope="props" style="margin-bottom:2rem">
                     <div class="media">
                         <div class="media-left">
@@ -189,12 +200,14 @@
             <b-field grouped>
               <b-field horizontal expanded>
                   <b-autocomplete
+                    required
                     v-model="team2[0].name"
                     placeholder="BOOTYWIZARD42069"
                     :data="players"
                     :loading="isFetching"
                     field="name"
-                    @typing="getAsyncData">
+                    @typing="getAsyncData"
+                    @select="option => team2[0] = option">
                   <template slot-scope="props">
                     <div class="media">
                         <div class="media-left">
@@ -224,12 +237,14 @@
             <b-field grouped>
               <b-field horizontal expanded>
                   <b-autocomplete
+                    required
                     v-model="team2[1].name"
                     placeholder="BOOTYWIZARD42069"
                     :data="players"
                     :loading="isFetching"
                     field="name"
-                    @typing="getAsyncData">
+                    @typing="getAsyncData"
+                    @select="option => team2[1] = option">
                   <template slot-scope="props">
                     <div class="media">
                         <div class="media-left">
@@ -259,12 +274,14 @@
             <b-field grouped>
               <b-field horizontal expanded>
                   <b-autocomplete
+                    required
                     v-model="team2[2].name"
                     placeholder="BOOTYWIZARD42069"
                     :data="players"
                     :loading="isFetching"
                     field="name"
-                    @typing="getAsyncData">
+                    @typing="getAsyncData"
+                    @select="option => team2[2] = option">
                   <template slot-scope="props">
                     <div class="media">
                         <div class="media-left">
@@ -294,12 +311,14 @@
             <b-field grouped>
               <b-field horizontal expanded>
                   <b-autocomplete
+                    required
                     v-model="team2[3].name"
                     placeholder="BOOTYWIZARD42069"
                     :data="players"
                     :loading="isFetching"
                     field="name"
-                    @typing="getAsyncData">
+                    @typing="getAsyncData"
+                    @select="option => team2[3] = option">
                   <template slot-scope="props">
                     <div class="media">
                         <div class="media-left">
@@ -329,12 +348,14 @@
             <b-field grouped>
               <b-field horizontal expanded>
                   <b-autocomplete
+                    required
                     v-model="team2[4].name"
                     placeholder="BOOTYWIZARD42069"
                     :data="players"
                     :loading="isFetching"
                     field="name"
-                    @typing="getAsyncData">
+                    @typing="getAsyncData"
+                    @select="option => team2[4] = option">
                   <template slot-scope="props">
                     <div class="media">
                         <div class="media-left">
@@ -355,7 +376,8 @@
                       <option
                       v-for="position in positions"
                       :value="position"
-                      :key="position">
+                      :key="position"
+                      @select="option => team2Positions.add(option)">
                       {{position}}
                       </option>
                   </b-select>
@@ -365,8 +387,9 @@
         </div>
       </section>
       <footer class="modal-card-foot">
-          <button class="button is-primary is-fullwidth" @click="nextSection" :disabled="testStage1">Next</button>
+          <button class="button is-primary is-fullwidth" @click="nextSection" type="submit" :disabled="testStage1">Next</button>
       </footer>
+      </form>
     </div>
     <div v-else-if="this.state==1">
       <header class="modal-card-head" v-if="!this.match">
@@ -466,8 +489,10 @@ export default {
     return {
       players: [],
       positions: ["Top","Jungle","Middle","Bottom","Support"],
-      team1:[{name:"",role:""},{name:"",role:""},{name:"",role:""},{name:"",role:""},{name:"",role:""}],
-      team2:[{name:"",role:""},{name:"",role:""},{name:"",role:""},{name:"",role:""},{name:"",role:""}],
+      team1Positions:[],
+      team2Positions:[],
+      team1:[{name:null,role:null},{name:null,role:null},{name:null,role:null},{name:null,role:null},{name:null,role:null}],
+      team2:[{name:null,role:null},{name:null,role:null},{name:null,role:null},{name:null,role:null},{name:null,role:null}],
       matchUrl: '',
       match: null,
       matchLoading: false,
@@ -503,23 +528,19 @@ export default {
     clearMatch(){
       this.match = null,
       this.matchUrl = ''
+    },
+    addToTeam(id){
+      if(id == 0){
+        this.team1.add()
+      }
+      else{
+
+      }
     }
   },
   computed:{
-    testStage1(){
-      if(this.team1[0].name == "" || this.team1[0].role == "" ||
-      this.team1[1].name == "" || this.team1[1].role == "" ||
-      this.team1[2].name == "" || this.team1[2].role == "" ||
-      this.team1[3].name == "" || this.team1[3].role == "" ||
-      this.team1[4].name == "" || this.team1[4].role == "" ||
-      this.team2[0].name == "" || this.team2[0].role == "" ||
-      this.team2[1].name == "" || this.team2[1].role == "" ||
-      this.team2[2].name == "" || this.team2[2].role == "" ||
-      this.team2[3].name == "" || this.team2[3].role == "" ||
-      this.team2[4].name == "" || this.team2[4].role == "") {
-      return true;
-    }
-    return false;
+    testStage1: function (){
+      return false
     }
   },
   components:{
@@ -554,7 +575,7 @@ export default {
     position: relative;
     display: block;
     margin-bottom: -1px;
-    background-color: #fff;
+    background-color: #DFDFDF;
     border: 1px solid rgba(0,0,0,.125);
     cursor:move;
 }
