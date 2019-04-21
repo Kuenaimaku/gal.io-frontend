@@ -12,4 +12,4 @@ const store = new Vuex.Store({
 	plugins: debug ? [createLogger()] : []
 });
 
-export default store;
+export default store;	
