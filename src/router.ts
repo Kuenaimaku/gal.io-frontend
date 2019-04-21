@@ -1,10 +1,11 @@
 import Vue from "vue";
+import store from "./store";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const router =  new Router({
   mode: 'history',
   linkExactActiveClass: 'is-active',
   routes: [
@@ -33,3 +34,14 @@ export default new Router({
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+	if (to.matched.some(record => record.meta.requiresAdmin)) {
+		if (!store.getters.loggedIn || !store.getters.user.is_admin)
+			console.log("log")
+	}
+
+	next();
+});
+
+export default router;
