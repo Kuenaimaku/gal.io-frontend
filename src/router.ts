@@ -5,9 +5,9 @@ import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
-const router =  new Router({
-  mode: 'history',
-  linkExactActiveClass: 'is-active',
+const router = new Router({
+  mode: "history",
+  linkExactActiveClass: "is-active",
   routes: [
     {
       path: "/",
@@ -17,31 +17,28 @@ const router =  new Router({
     {
       path: "/matches",
       name: "matches",
-      component: () =>
-        import("./views/Matches.vue")
+      component: () => import("./views/Matches.vue")
     },
     {
       path: "/players",
       name: "players",
-      component: () =>
-        import("./views/Players.vue")
+      component: () => import("./views/Players.vue")
     },
     {
       path: "/Champions",
       name: "champions",
-      component: () =>
-        import("./views/Champions.vue")
+      component: () => import("./views/Champions.vue")
     }
   ]
 });
 
 router.beforeEach((to, from, next) => {
-	if (to.matched.some(record => record.meta.requiresAdmin)) {
-		if (!store.getters.loggedIn || !store.getters.user.is_admin)
-			console.log("log")
-	}
+  if (to.matched.some(record => record.meta.requiresAdmin)) {
+    if (!store.getters.loggedIn || !store.getters.user.is_admin)
+      console.log("log");
+  }
 
-	next();
+  next();
 });
 
 export default router;

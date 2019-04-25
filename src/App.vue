@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <router-view id="view"/>
+    <router-view id="view" />
     <Footer />
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import api from '@/api'
+import api from "@/api";
 
 export default {
   components: {
@@ -20,15 +20,15 @@ export default {
 </script>
 
 <style lang="scss">
-html{
-  overflow-y:auto !important;
+html {
+  overflow-y: auto !important;
 }
 #app {
   display: flex;
   min-height: calc(100vh - 60px);
   flex-direction: column;
 }
-#view{
+#view {
   flex: 1;
 }
 #nav {

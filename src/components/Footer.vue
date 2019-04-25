@@ -34,9 +34,9 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-	padding-bottom: 0rem;
+  padding-bottom: 0rem;
 }
-a.button{
+a.button {
   margin: 0rem 0.5rem;
 }
 </style>

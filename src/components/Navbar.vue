@@ -1,5 +1,9 @@
 <template>
-  <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
+  <nav
+    class="navbar is-dark is-fixed-top"
+    role="navigation"
+    aria-label="main navigation"
+  >
     <div class="navbar-brand">
       <a class="navbar-item" href="https://kuenaimaku.com">
         <img
@@ -28,16 +32,15 @@
         <router-link to="/champions" class="navbar-item">Champions</router-link>
       </div>
       <div class="navbar-end" v-if="loggedIn">
-				<span class="navbar-item">{{user.username}}</span>
-				<a class="navbar-item" @click="logout">Logout</a>
-			</div>
-			<div class="navbar-end" v-else>
-				<a class="navbar-item" @click="showLogin">Log in</a>
-			</div>
+        <span class="navbar-item">{{ user.username }}</span>
+        <a class="navbar-item" @click="logout">Logout</a>
+      </div>
+      <div class="navbar-end" v-else>
+        <a class="navbar-item" @click="showLogin">Log in</a>
+      </div>
     </div>
   </nav>
 </template>
-
 
 <script>
 import { mapGetters } from "vuex";
@@ -45,28 +48,29 @@ import LoginModal from "@/components/modals/LoginModal";
 import * as aTypes from "@/store/action-types";
 
 export default {
-	name: "Navbar",
-	data() {
-		return {
-			showNav: false
-		};
-	},
-	computed: {
-		...mapGetters(["user", "loggedIn"])
-	},
-	methods: {
-		showLogin() {
-			this.$modal.open({
-				parent: this,
-				component: LoginModal
-			});
-		},
-		logout() {
-			this.$store.dispatch(aTypes.LOG_OUT);
-		}
-	},
-	components: {
-		LoginModal
-	}
+  name: "Navbar",
+  data() {
+    return {
+      showNav: false
+    };
+  },
+  computed: {
+    ...mapGetters(["user", "loggedIn"])
+  },
+  methods: {
+    showLogin() {
+      this.$modal.open({
+        parent: this,
+        component: LoginModal
+      });
+    },
+    logout() {
+      this.$store.dispatch(aTypes.LOG_OUT);
+    }
+  },
+  components: {
+    /* eslint-disable vue/no-unused-components */
+    LoginModal
+  }
 };
 </script>

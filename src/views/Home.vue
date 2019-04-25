@@ -25,7 +25,7 @@
                   target="_blank"
                 >
                   <span class="icon">
-                    <b-icon icon="github-face"/>
+                    <b-icon icon="github-face" />
                   </span>
                   <span>github</span>
                 </a>
@@ -45,5 +45,4 @@ import { Component, Vue } from "vue-property-decorator";
 export default class Home extends Vue {}
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
