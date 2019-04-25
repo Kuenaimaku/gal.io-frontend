@@ -32,7 +32,10 @@
         <router-link to="/champions" class="navbar-item">Champions</router-link>
       </div>
       <div class="navbar-end" v-if="loggedIn">
-        <span class="navbar-item">{{ user.username }}</span>
+        <div class="navbar-item">
+          <b-icon icon="account-circle"/>
+          <span> logged in as: {{ user.username }}</span>
+        </div>
         <a class="navbar-item" @click="logout">Logout</a>
       </div>
       <div class="navbar-end" v-else>

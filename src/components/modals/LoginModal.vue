@@ -9,7 +9,7 @@
                 <section class="modal-card-body">
                   <div class="columns">
                     <div class="column">
-                      <b-field label="username">
+                      <b-field label="Username">
                         <b-input
                           placeholder=""
                           required
@@ -43,16 +43,16 @@
                   >
                   <button class="button is-primary is-fullwidth" @click="login">
                     <span class="icon">
-                      <b-icon icon="check-circle-outline" />
+                      <b-icon icon="login" />
                     </span>
-                    <span>Validate</span>
+                    <span>Login</span>
                   </button>
                 </footer>
               </div>
             </form>
           </b-tab-item>
           <b-tab-item label="Sign Up">
-            <form action>
+            <form action v-on:submit.prevent>
               <div class="modal-card" style="width: auto">
                 <section class="modal-card-body">
                   <div class="columns">
@@ -66,7 +66,7 @@
                           v-model="registerForm.email"
                         ></b-input>
                       </b-field>
-                      <b-field label="username">
+                      <b-field label="Username">
                         <b-input
                           placeholder=""
                           required
@@ -110,7 +110,7 @@
                     @click="register"
                   >
                     <span class="icon">
-                      <b-icon icon="check-circle-outline" />
+                      <b-icon icon="account-multiple-plus" />
                     </span>
                     <span>Sign Up</span>
                   </button>
@@ -177,6 +177,10 @@ export default {
           this.registerForm.confirm
         );
         this.isSuccess = true;
+        this.$parent.$toast.open({
+          message: "Account Created!",
+          type: 'is-success'
+        })
         this.$parent.close();
       } catch(err){
         switch (err.status) {
