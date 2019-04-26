@@ -651,7 +651,7 @@
             </button>
           </div>
           <div class="column">
-            <button class="button is-primary is-fullwidth" @click="nextSection">
+            <button class="button is-primary is-fullwidth" @click="createMatch">
               Next
             </button>
           </div>
@@ -665,6 +665,7 @@ import Champion from "@/components/Champion";
 import Participant from "@/components/Participant";
 
 import Api from "@/api";
+import { mapGetters } from "vuex";
 import _ from "lodash";
 import draggable from "vuedraggable";
 
@@ -733,12 +734,16 @@ export default {
       } else {
         this.team2.add();
       }
+    },
+    async createMatch() {
+      const res = await Api.matches.createMatch(this.match, this.team1, this.team2, this.user)
     }
   },
   computed: {
     testStage1: function() {
       return false;
-    }
+    },
+    ...mapGetters(["user", "loggedIn"])
   },
   components: {
     Champion,

@@ -44,7 +44,7 @@
         ></b-loading>
       </div>
     </div>
-    <section id="addPlayer">
+    <section id="addPlayer" v-if="loggedIn">
       <b-tooltip
         label="Add a New Player"
         animated
@@ -70,6 +70,8 @@ import _ from "lodash";
 import Player from "@/components/Player";
 import AddPlayerModal from "@/components/modals/AddPlayerModal";
 import Api from "@/api";
+
+import { mapGetters } from "vuex";
 
 export default {
   name: "Players",
@@ -115,7 +117,8 @@ export default {
   computed: {
     playerChunks() {
       return _.chunk(Object.values(this.players), 5);
-    }
+    },
+    ...mapGetters(["user", "loggedIn"])
   },
   components: {
     /* eslint-disable vue/no-unused-components */

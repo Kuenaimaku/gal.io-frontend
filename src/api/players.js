@@ -47,7 +47,7 @@ export default {
   },
   async createPlayer(object) {
     return await axios({
-      method: "PUT",
+      method: "POST",
       url: "/players",
       haders: {},
       data: {

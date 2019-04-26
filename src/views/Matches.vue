@@ -20,7 +20,7 @@
         v-bind:match="match"
       ></Match>
     </section>
-    <section id="addMatch">
+    <section id="addMatch" v-if="loggedIn">
       <b-tooltip
         label="Add a New Match"
         animated
@@ -43,7 +43,7 @@
 <script>
 import Match from "@/components/Match";
 import AddMatchModal from "@/components/modals/AddMatchModal";
-
+import { mapGetters } from "vuex";
 import Api from "@/api";
 
 export default {
@@ -71,6 +71,9 @@ export default {
         width: "80vw"
       });
     }
+  },
+  computed: {
+    ...mapGetters(["user", "loggedIn"])
   },
   components: {
     Match,
