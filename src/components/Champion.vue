@@ -1,33 +1,69 @@
 <template>
-  <nav class="level">
-    <div class="level-left">
-      <div class="media">
-        <div class="media-left">
-          <figure class="image is-64x64">
-            <img
-              class="is-rounded"
-              v-bind:src="
-                'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/champion/' +
-                  champion.Champion.image.full
-              "
-              alt="Summoner Icon"
-            />
-          </figure>
+  <div class="column is-one-fifth">
+    <div class="card">
+      <div class="card-image">
+        <nav class="level">
+          <div class="level-item">
+            <figure class="image is-128x128">
+              <img class="is-rounded"
+                v-bind:src="
+                'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-tiles/'+ champion.champion.key +'/'+ champion.champion.key +'000.jpg'"
+                alt="Champion Icon"
+                rel="preload"
+              />
+            </figure>
+          </div>
+        </nav>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-5 has-text-centered">
+              {{ champion.champion.name }}
+            </p>
+          </div>
         </div>
-        <div class="media-content is-vcentered">
-          <p class="title is-4">{{ champion.Champion.name }}</p>
-          <p class="subtitle is-6">{{ champion.Champion.title }}</p>
+
+        <div class="content">
+          <nav class="level is-mobile">
+            <div class="level-item has-text-centered">
+              <b-tooltip v-bind:label="'In ' + ((champion.picks > 0) ? Math.floor(champion.picks / champion.totalMatches*100) + '%':'0%') + ' of games'"
+              type="is-info"
+              position="is-bottom"
+              animated>
+                <div>
+                  <p class="heading">Picks</p>
+                  <p class="subtitle">{{champion.picks}}</p>
+                </div>
+              </b-tooltip>
+            </div>
+            <div class="level-item has-text-centered">
+              <b-tooltip v-bind:label="'Blue: '+ champion.blueBans + ' Red: ' + champion.redBans"
+              type="is-info"
+              position="is-bottom"
+              animated>
+                <div>
+                  <p class="heading">Bans</p>
+                  <p class="subtitle">{{(champion.blueBans + champion.redBans)}}</p>
+                </div>
+              </b-tooltip>
+            </div>
+            <div class="level-item has-text-centered">
+              <b-tooltip v-bind:label="((champion.picks > 0) ? Math.floor(champion.wins / champion.picks*100) + '%':'0%') + ' Win Rate'"
+              type="is-info"
+              position="is-bottom"
+              animated>
+                <div>
+                  <p class="heading">Wins</p>
+                  <p class="subtitle">{{champion.wins}}</p>
+                </div>
+              </b-tooltip>
+            </div>
+          </nav>
         </div>
       </div>
     </div>
-    <div class="level-right">
-      <div class="media">
-        <div class="media-right">
-          <b-icon size="is-large" icon="arrow-left"> </b-icon>
-        </div>
-      </div>
-    </div>
-  </nav>
+  </div>
 </template>
 
 <script>
@@ -39,13 +75,16 @@ export default {
   data() {
     return {};
   },
-  methods: {}
+  methods: {
+    
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-nav .level {
-  margin: 1rem 5rem;
+img {
+  margin-top: 1rem;
+  box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.2), 0 0 0 4px rgba(10, 10, 10, 0.1)
 }
 </style>

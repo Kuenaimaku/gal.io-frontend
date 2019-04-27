@@ -2,7 +2,7 @@
   <section class="container">
     <b-collapse class="card expand" :open.sync="isOpen">
       <div slot="trigger" slot-scope="props" class="card-header" role="button">
-        <p class="card-header-title is-pulled-left">12/01/2019</p>
+        <p class="card-header-title is-pulled-left">{{match.timeStamp}}</p>
         <p class="card-header-title">
           {{ match.teams[0].participants[0].player.summonerName }} VS
           {{ match.teams[1].participants[0].player.summonerName }}

@@ -1,6 +1,6 @@
 <template>
   <div class="matches">
-    <section class="hero is-success is-bold block">
+    <section class="hero is-match is-bold block">
       <div class="hero-body">
         <div class="container">
           <div class="columns is-vcentered">

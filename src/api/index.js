@@ -12,10 +12,12 @@ else axios.defaults.baseURL = "http://localhost:5000/api/";
 import accounts from "./accounts";
 import players from "./players";
 import matches from "./matches";
+import champions from "./champions";
 /// #endif
 
 export default {
   accounts,
   players,
-  matches
+  matches,
+  champions
 };

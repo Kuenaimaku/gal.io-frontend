@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="hero is-info is-bold block">
+    <section class="hero is-info is-player block">
       <div class="hero-body">
         <div class="container">
           <div class="columns is-vcentered">
@@ -16,7 +16,7 @@
     <div v-if="players">
       <div class="container">
         <section
-          class="columns is-vcentered"
+          class="columns is-vcentered is-centered"
           v-for="chunk in playerChunks"
           v-bind:key="chunk[0].id"
         >
