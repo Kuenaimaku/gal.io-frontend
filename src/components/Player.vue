@@ -1,5 +1,5 @@
 <template>
-  <div class="column is-one-thirds">
+  <div class="column is-one-fifth">
     <div class="card">
       <div class="card-image">
         <nav class="level">
@@ -64,5 +64,6 @@ export default {
 <style scoped lang="scss">
 img {
   margin-top: 1rem;
+  box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.2), 0 0 0 4px rgba(10, 10, 10, 0.1)
 }
 </style>

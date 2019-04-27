@@ -1,6 +1,6 @@
 <template>
   <div class="matches">
-    <section class="hero is-success is-bold block">
+    <section class="hero is-match is-bold block">
       <div class="hero-body">
         <div class="container">
           <div class="columns is-vcentered">
@@ -57,7 +57,7 @@ export default {
   async mounted() {
     try {
       const res = await Api.matches.fetchMatches();
-      this.matches = res.data;
+      this.matches = res;
       this.loading = false;
     } catch (err) {
       console.log(err);

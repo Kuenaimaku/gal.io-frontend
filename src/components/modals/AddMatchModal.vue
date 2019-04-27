@@ -590,11 +590,11 @@
         </div>
         <div class="columns" v-if="this.match">
           <div class="column">
-            <Champion
+            <AddMatchChampion
               v-for="participant in this.match.teams[0].Participants"
               v-bind:key="participant.participantId"
               v-bind:champion="participant"
-            ></Champion>
+            ></AddMatchChampion>
           </div>
           <div class="column">
             <draggable
@@ -604,21 +604,21 @@
               @start="dragging = true"
               @end="dragging = false"
             >
-              <Participant
+              <AddMatchParticipant
                 class="list-group-item"
                 v-for="player in team1"
                 :key="player.name"
                 :participant="player"
               >
-              </Participant>
+              </AddMatchParticipant>
             </draggable>
           </div>
           <div class="column">
-            <Champion
+            <AddMatchChampion
               v-for="participant in this.match.teams[1].Participants"
               v-bind:key="participant.participantId"
               v-bind:champion="participant"
-            ></Champion>
+            ></AddMatchChampion>
           </div>
           <div class="column">
             <draggable
@@ -629,13 +629,13 @@
               @start="dragging = true"
               @end="dragging = false"
             >
-              <Participant
+              <AddMatchParticipant
                 class="list-group-item"
                 v-for="player in team2"
                 :key="player.name"
                 :participant="player"
               >
-              </Participant>
+              </AddMatchParticipant>
             </draggable>
           </div>
         </div>
@@ -661,8 +661,8 @@
   </div>
 </template>
 <script>
-import Champion from "@/components/Champion";
-import Participant from "@/components/Participant";
+import AddMatchChampion from "@/components/AddMatchChampion";
+import AddMatchParticipant from "@/components/AddMatchParticipant";
 
 import Api from "@/api";
 import { mapGetters } from "vuex";
@@ -746,8 +746,8 @@ export default {
     ...mapGetters(["user", "loggedIn"])
   },
   components: {
-    Champion,
-    Participant,
+    AddMatchChampion,
+    AddMatchParticipant,
     draggable
   }
 };

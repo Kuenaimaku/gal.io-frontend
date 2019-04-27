@@ -28,7 +28,7 @@
 import Api from "@/api";
 
 export default {
-  name: "Participant",
+  name: "AddMatchParticipant",
   props: ["participant"],
   data() {
     return {};

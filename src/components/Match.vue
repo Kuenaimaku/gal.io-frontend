@@ -2,10 +2,10 @@
   <section class="container">
     <b-collapse class="card expand" :open.sync="isOpen">
       <div slot="trigger" slot-scope="props" class="card-header" role="button">
-        <p class="card-header-title is-pulled-left">12/01/2019</p>
+        <p class="card-header-title is-pulled-left">{{match.timeStamp}}</p>
         <p class="card-header-title">
-          {{ match.teams[0].players[0].common_name }} VS
-          {{ match.teams[1].players[0].common_name }}
+          {{ match.teams[0].participants[0].player.summonerName }} VS
+          {{ match.teams[1].participants[0].player.summonerName }}
         </p>
         <a class="card-header-icon">
           <b-icon :icon="props.open ? 'menu-down' : 'menu-up'"> </b-icon>
@@ -15,24 +15,16 @@
         <div class="columns">
           <div
             class="column"
-            v-for="team in match.teams"
+            v-for="(team, number) in match.teams"
             v-bind:key="team.id"
             v-bind:team="match.team"
           >
-            <p class="title is-4 has-text-centered">Team {{ team.id }} - Win</p>
-            <b-table :data="team.players">
-              <template slot-scope="players">
-                <b-table-column field="common_name" label="Name">
-                  {{ players.row.common_name }}
-                </b-table-column>
-                <b-table-column field="summoner_name" label="Ingame">
-                  {{ players.row.summoner_name }}
-                </b-table-column>
-                <b-table-column field="role" label="Role">
-                  {{ players.row.role }}
-                </b-table-column>
-              </template>
-            </b-table>
+            <p class="title is-4 has-text-centered"><span v-if="team.win"> Victory</span><span v-else> Defeat</span></p>
+            <MatchParticipant
+            v-for="participant in team.participants"
+            v-bind:key="participant.role"
+            v-bind:participant="participant"
+            ></MatchParticipant>
           </div>
         </div>
       </div>
@@ -41,6 +33,7 @@
 </template>
 
 <script>
+import MatchParticipant from "@/components/MatchParticipant";
 export default {
   name: "Match",
   props: ["match"],
@@ -48,6 +41,9 @@ export default {
     return {
       isOpen: false
     };
+  },
+  components: {
+    MatchParticipant
   }
 };
 </script>
