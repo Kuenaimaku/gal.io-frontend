@@ -57,7 +57,7 @@ export default {
   async mounted() {
     try {
       const res = await Api.matches.fetchMatches();
-      this.matches = res.data;
+      this.matches = res;
       this.loading = false;
     } catch (err) {
       console.log(err);
