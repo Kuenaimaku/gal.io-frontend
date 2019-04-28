@@ -2,7 +2,7 @@
   <section class="container">
     <b-collapse class="card expand" :open.sync="isOpen">
       <div slot="trigger" slot-scope="props" class="card-header" role="button">
-        <p class="card-header-title is-pulled-left">{{match.timeStamp}}</p>
+        <p class="card-header-title is-pulled-left">{{match.timeStamp | moment("MM/DD/YYYY")}}</p>
         <p class="card-header-title">
           {{ match.teams[0].participants[0].player.summonerName }} VS
           {{ match.teams[1].participants[0].player.summonerName }}
@@ -13,36 +13,12 @@
       </div>
       <div class="card-content">
         <div class="columns">
-          <div
-            class="column"
+          <MatchTeam
             v-for="(team,number) in match.teams"
             v-bind:key="team.win"
-            v-bind:team="match.team"
-          >
-            <p class="title is-4 has-text-centered">
-              <span v-if="number == 0"> Blue Team </span><span v-else> Red Team </span> -
-              <span v-if="team.win"> Win </span><span v-else> Defeat</span>
-            </p>
-            <MatchParticipant
-             v-for="participant in team.participants"
-             v-bind:key="participant.role"
-             v-bind:participant="participant"
-            >
-            </MatchParticipant>
-
-              <span> Bans:
-                <figure class="image is-24x24 is-bans"
-                v-for="ban in team.bans"
-                v-bind:key="ban.pickTurn"
-                v-bind:ban="team.ban">
-                <img v-bind:src="
-                  'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/champion/' +
-                    ban.champion.id +
-                    '.png'"/>
-                </figure>
-              </span>
-
-          </div>
+            v-bind:team="team"
+            v-bind:side="number">
+          </MatchTeam>
         </div>
       </div>
     </b-collapse>
@@ -50,7 +26,7 @@
 </template>
 
 <script>
-import MatchParticipant from "@/components/MatchParticipant";
+import MatchTeam from "@/components/MatchTeam";
 export default {
   name: "Match",
   props: ["match"],
@@ -60,7 +36,7 @@ export default {
     };
   },
   components: {
-    MatchParticipant
+    MatchTeam
   }
 };
 </script>

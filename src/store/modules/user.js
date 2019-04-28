@@ -6,7 +6,7 @@ import Axios from "axios";
 const state = {
   loggingIn: false,
   loggedIn: false,
-  user: null
+  user: !! localStorage.getItem("vuex")
 };
 
 const getters = {

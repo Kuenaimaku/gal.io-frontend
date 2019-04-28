@@ -4,9 +4,16 @@ import router from "./router";
 import store from "./store";
 
 import Buefy from "buefy";
+import numFormat from 'vue-filter-number-format';
+
 
 Vue.use(Buefy);
+Vue.use(require('vue-moment'));
 Vue.config.productionTip = false;
+
+//Define Global Filters here
+Vue.filter('numFormat', numFormat);
+
 
 new Vue({
   router,

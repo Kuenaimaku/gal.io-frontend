@@ -13,13 +13,30 @@
         </div>
       </div>
     </section>
-    <section>
-      <Match
-        v-for="match in matches"
-        v-bind:key="match.id"
-        v-bind:match="match"
-      ></Match>
-    </section>
+    <div v-if="this.matches">
+      <section>
+        <Match
+          v-for="match in matches"
+          v-bind:key="match.id"
+          v-bind:match="match"
+        ></Match>
+      </section>
+    </div>
+    <div v-else>
+      <div class="container">
+        <nav class="level">
+          <div class="level-item">
+            <figure class="image">
+              <img class="is-rounded" src="~@/assets/missing.png" />
+            </figure>
+          </div>
+        </nav>
+        <b-loading
+          :active.sync="this.loading"
+          :is-full-page="false"
+        ></b-loading>
+      </div>
+    </div>
     <section id="addMatch" v-if="loggedIn">
       <b-tooltip
         label="Add a New Match"
