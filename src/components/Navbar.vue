@@ -69,6 +69,10 @@ export default {
     },
     logout() {
       this.$store.dispatch(aTypes.LOG_OUT);
+      this.$parent.$toast.open({
+          message: "Logged out.",
+          type: 'is-success'
+        })
     }
   },
   components: {

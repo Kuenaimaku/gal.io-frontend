@@ -50,7 +50,7 @@
           class="is-rounded"
           @click="showAddMatch"
         >
-          <b-icon icon="message-plus" />
+          <b-icon icon="playlist-plus" />
         </b-button>
       </b-tooltip>
     </section>

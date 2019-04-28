@@ -38,7 +38,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-nav .level {
-  margin: 1rem 5rem;
+nav.level {
+  padding: 0.5rem;
+}
+img.is-rounded {
+  box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.2), 0 0 0 4px rgba(10, 10, 10, 0.1)
 }
 </style>

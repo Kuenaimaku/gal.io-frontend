@@ -17,7 +17,8 @@
             v-for="(team,number) in match.teams"
             v-bind:key="team.win"
             v-bind:team="team"
-            v-bind:side="number">
+            v-bind:side="number"
+            v-bind:patch="match.gameVersion">
           </MatchTeam>
         </div>
       </div>

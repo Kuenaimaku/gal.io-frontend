@@ -26,6 +26,7 @@
         v-bind:key="participant.role"
         v-bind:participant="participant"
         v-bind:side="side"
+        v-bind:patch="patch"
       >
       </MatchParticipant>
       <footer>
@@ -136,6 +137,7 @@
         v-bind:key="participant.role"
         v-bind:participant="participant"
         v-bind:side="side"
+        v-bind:patch="patch"
       >
       </MatchParticipant>
       <footer>
@@ -231,7 +233,7 @@ import MatchParticipant from "@/components/MatchParticipant";
 
 export default {
   name: "MatchTeam",
-  props: ["team", "side"],
+  props: ["team", "side", "patch"],
   data() {
     return {
       heraldKills: 0,
@@ -255,6 +257,7 @@ export default {
   position:relative;
   top:12px;
   margin:0em 0.1em !important;
+  box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.2), 0 0 0 3px rgba(10, 10, 10, 0.1)
 }
 .is-right{
   float:right;

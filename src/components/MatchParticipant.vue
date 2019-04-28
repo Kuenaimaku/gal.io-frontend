@@ -12,7 +12,7 @@
             <img
               class="is-rounded"
               v-bind:src="
-                'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/spell/' +
+                'http://ddragon.leagueoflegends.com/cdn/'+ patch +'/img/spell/' +
                   participant.summonerSpell1.id +
                   '.png'"
               alt="summoner"
@@ -22,7 +22,7 @@
             <img
               class="is-rounded"
               v-bind:src="
-                'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/spell/' +
+                'http://ddragon.leagueoflegends.com/cdn/'+ patch +'/img/spell/' +
                   participant.summonerSpell2.id +
                   '.png'"
               alt="summoner"
@@ -45,7 +45,7 @@
               <img v-if="item != 0"
                 class="is-sqaure"
                 v-bind:src="
-                  'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/item/'+ item + '.png'"
+                  'http://ddragon.leagueoflegends.com/cdn/'+ patch +'/img/item/'+ item + '.png'"
               />
               <img v-else
                 class="is-sqaure"
@@ -59,7 +59,7 @@
               <img v-if="item != 0"
                 class="is-sqaure"
                 v-bind:src="
-                  'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/item/'+ item + '.png'"
+                  'http://ddragon.leagueoflegends.com/cdn/'+ patch +'/img/item/'+ item + '.png'"
               />
               <img v-else
                 class="is-sqaure"
@@ -87,7 +87,7 @@
               <img v-if="item != 0"
                 class="is-sqaure"
                 v-bind:src="
-                  'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/item/'+ item + '.png'"
+                  'http://ddragon.leagueoflegends.com/cdn/'+ patch +'/img/item/'+ item + '.png'"
               />
               <img v-else
                 class="is-sqaure"
@@ -101,7 +101,7 @@
               <img v-if="item != 0"
                 class="is-sqaure"
                 v-bind:src="
-                  'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/item/'+ item + '.png'"
+                  'http://ddragon.leagueoflegends.com/cdn/'+ patch +'/img/item/'+ item + '.png'"
               />
               <img v-else
                 class="is-sqaure"
@@ -129,7 +129,7 @@
             <img
               class="is-rounded"
               v-bind:src="
-                'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/spell/' +
+                'http://ddragon.leagueoflegends.com/cdn/'+ patch +'/img/spell/' +
                   participant.summonerSpell1.id +
                   '.png'"
               alt="summoner"
@@ -139,7 +139,7 @@
             <img
               class="is-rounded"
               v-bind:src="
-                'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/spell/' +
+                'http://ddragon.leagueoflegends.com/cdn/'+ patch +'/img/spell/' +
                   participant.summonerSpell2.id +
                   '.png'"
               alt="summoner"
@@ -154,7 +154,7 @@
 <script>
 export default {
   name: "MatchParticipant",
-  props: ["participant", "side"],
+  props: ["participant", "side", "patch"],
   data() {
     return {
       isOpen: false,
@@ -202,10 +202,18 @@ export default {
   right: 30px;
 }
 .is-item{
-  display:inline-block
+  display:inline-block;
+  margin-left:0.25em;
+  margin-right:0.25em;
 }
 .is-right{
   float:right;
+}
+img.is-rounded {
+  box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.2), 0 0 0 4px rgba(10, 10, 10, 0.1)
+}
+img {
+  box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.2), 0 0 0 3px rgba(10, 10, 10, 0.1)
 }
 
 </style>

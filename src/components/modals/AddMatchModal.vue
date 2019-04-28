@@ -538,12 +538,12 @@
         </section>
         <footer class="modal-card-foot">
           <button
-            class="button is-primary is-fullwidth"
+            class="button is-primary is-large is-fullwidth"
             @click="nextSection"
             type="submit"
             :disabled="testStage1"
           >
-            Next
+            <span>Next</span><b-icon icon="arrow-right" />
           </button>
         </footer>
       </form>
@@ -590,69 +590,73 @@
         </div>
         <div class="columns" v-if="this.match">
           <div class="column">
-            <AddMatchChampion
-              v-for="participant in this.match.teams[0].Participants"
-              v-bind:key="participant.participantId"
-              v-bind:champion="participant"
-            ></AddMatchChampion>
-          </div>
-          <div class="column">
             <draggable
-              :list="team1"
+              :list="this.match.teams[0].Participants"
               class="list-group"
               ghost-class="ghost"
               @start="dragging = true"
               @end="dragging = false"
             >
-              <AddMatchParticipant
-                class="list-group-item"
-                v-for="player in team1"
-                :key="player.name"
-                :participant="player"
-              >
-              </AddMatchParticipant>
-            </draggable>
-          </div>
-          <div class="column">
             <AddMatchChampion
-              v-for="participant in this.match.teams[1].Participants"
+              class="list-group-item"
+              v-for="participant in this.match.teams[0].Participants"
               v-bind:key="participant.participantId"
               v-bind:champion="participant"
             ></AddMatchChampion>
+            </draggable>
+          </div>
+          <div class="column">
+            <AddMatchParticipant
+              v-for="player in team1"
+              :key="player.name"
+              :participant="player"
+            >
+            </AddMatchParticipant>
           </div>
           <div class="column">
             <draggable
-              :list="team2"
+              :list="this.match.teams[1].Participants"
               :disabled="false"
               class="list-group"
               ghost-class="ghost"
               @start="dragging = true"
               @end="dragging = false"
             >
+            <AddMatchChampion
+              class="list-group-item"
+              v-for="participant in this.match.teams[1].Participants"
+              v-bind:key="participant.participantId"
+              v-bind:champion="participant"
+            ></AddMatchChampion>
+            </draggable>
+          </div>
+          <div class="column">
               <AddMatchParticipant
-                class="list-group-item"
                 v-for="player in team2"
                 :key="player.name"
                 :participant="player"
               >
               </AddMatchParticipant>
-            </draggable>
           </div>
+        <b-loading
+          :active.sync="this.matchSubmitLoading"
+          :is-full-page="true"
+        ></b-loading>
         </div>
       </section>
       <footer class="modal-card-foot">
         <div class="columns button-footer">
           <div class="column">
             <button
-              class="button is-primary is-fullwidth"
+              class="button is-primary is-large is-fullwidth"
               @click="previousSection"
             >
-              Previous
+              <b-icon icon="arrow-left"/><span>Previous</span>
             </button>
           </div>
           <div class="column">
-            <button class="button is-primary is-fullwidth" @click="createMatch">
-              Next
+            <button class="button is-primary is-large is-fullwidth" @click="createMatch">
+              <span>Add Match</span><b-icon icon="playlist-check" />
             </button>
           </div>
         </div>
@@ -694,6 +698,7 @@ export default {
       matchUrl: "",
       match: null,
       matchLoading: false,
+      matchSubmitLoading: false,
       isFetching: false,
       dragging: false,
       state: 0
@@ -736,7 +741,24 @@ export default {
       }
     },
     async createMatch() {
-      const res = await Api.matches.createMatch(this.match, this.team1, this.team2, this.user)
+      this.matchSubmitLoading = true;
+      var self = this;
+      await Api.matches.createMatch(this.match, this.team1, this.team2, this.user)
+      .then(response => {
+        self.matchSubmitLoading = false;
+        self.$parent.close();
+      })
+      .catch(function(error) {
+        console.log(error);
+          self.$toast.open({
+          message: "Match could not be added. Please check your information and try again.",
+          type: 'is-danger',
+          duration:5000,
+        })
+      })
+      .finally(function(){
+        self.matchSubmitLoading = false;
+      });
     }
   },
   computed: {
@@ -775,10 +797,15 @@ export default {
 
 .list-group-item {
   position: relative;
-  display: block;
+
   margin-bottom: -1px;
   background-color: #dfdfdf;
   border: 1px solid rgba(0, 0, 0, 0.125);
   cursor: move;
+}
+
+.draggable-container{
+  background-color:#EFEFEF;
+  border: 1px dotted #c8ebfb;
 }
 </style>

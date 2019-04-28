@@ -155,6 +155,10 @@ export default {
           this.loginForm.password,
           this.loginForm.confirm
         ]);
+        this.$parent.$toast.open({
+          message: "Logged in.",
+          type: 'is-success'
+        })
         this.$parent.close();
       } catch (err) {
         switch (err.status) {
