@@ -45,6 +45,20 @@ export default {
         return error.response;
       });
   },
+  async getPlayer(id) {
+    return await axios({
+      method: "GET",
+      url: "/players/" + id + "/detail",
+      data: null
+    })
+      .then(response => {
+        return response.data;
+      })
+      .catch(function(error) {
+        console.error(error);
+        return error.response;
+      });
+  },
   async createPlayer(object) {
     return await axios({
       method: "POST",

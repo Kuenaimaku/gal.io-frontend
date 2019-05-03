@@ -14,6 +14,20 @@ export default {
         return error.response;
       });
   },
+  async fetchMatchesByPlayer(id) {
+    return await axios({
+      method: "GET",
+      url: "/matches/by-player/" + id,
+      data: null
+    })
+      .then(response => {
+        return response.data;
+      })
+      .catch(function(error) {
+        console.error(error);
+        return error.response;
+      });
+  },
   async getMatch(id) {
     return await axios({
       method: "GET",

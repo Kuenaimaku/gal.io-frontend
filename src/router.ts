@@ -28,6 +28,11 @@ const router = new Router({
       path: "/Champions",
       name: "champions",
       component: () => import("./views/Champions.vue")
+    },
+    {
+      path: "/players/:id",
+      name: "player",
+      component: () => import("./views/PlayerDetail.vue")
     }
   ]
 });

@@ -33,7 +33,7 @@
         </div>
       </div>
       <footer class="card-footer">
-        <a class="card-footer-item">Details</a>
+        <router-link v-bind:to="/players/ + player.id" class="card-footer-item">Details</router-link>
         <a class="card-footer-item" v-if="user">Edit</a>
         <a class="card-footer-item" v-if="user" @click="removePlayer">Delete</a>
       </footer>
