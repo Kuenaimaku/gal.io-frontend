@@ -30,7 +30,7 @@
         <div class="media">
           <div class="media-content">
             <p class="has-centered-text">
-            {{badge.Description}}
+            {{badge.PlayerName}} {{badge.Description}}
           </p>
           <small v-if="badge.Blurb">{{badge.Blurb}}</small>
           </div>
