@@ -30,10 +30,10 @@
         <div class="media">
           <div class="media-content">
             <p class="has-centered-text">
-            {{badge.Player}} and <router-link v-bind:to="/players/ + badge.RelatedPlayerId">{{badge.RelatedPlayer}}</router-link> are <strong>{{badge.Relationship}}</strong>
+            {{badge.PlayerName}} and <router-link v-bind:to="/players/ + badge.RelatedPlayerId">{{badge.RelatedPlayerName}}</router-link> are <strong>{{badge.Relationship}}</strong>
               <br>
             </p>
-            <small v-if="badge.Blurb1">{{badge.Player}} {{badge.Blurb1}} {{badge.RelatedPlayer}} {{badge.Blurb2}}</small>
+            <small v-if="badge.Blurb1">{{badge.Player}} {{badge.Blurb1}} {{badge.RelatedPlayerName}} {{badge.Blurb2}}</small>
           </div>
         </div>
       </div>
