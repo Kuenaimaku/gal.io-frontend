@@ -34,7 +34,7 @@
             <ul>
               <li v-bind:class="{'is-active': currentTab == 'overview'}"><a @click.prevent="changeTab('overview')">Overview</a></li>
               <li v-bind:class="{'is-active': currentTab == 'history'}"><a @click.prevent="changeTab('history')">Match History</a></li>
-              <li v-bind:class="{'is-active': currentTab == 'stats'}"><a @click.prevent="changeTab('stats')">Synergies & Statistics</a></li>
+              <li v-bind:class="{'is-active': currentTab == 'badges'}"><a @click.prevent="changeTab('badges')">Badges</a></li>
             </ul>
           </div>
         </nav>
@@ -55,9 +55,9 @@
           </section>
         </div>
       </div>
-      <div class="container" v-if="currentTab == 'stats'">
+      <div class="container" v-if="currentTab == 'badges'">
         <div class="columns">
-          <div class="column is-narrow  ">
+          <div class="column is-narrow" v-if="player.BestAlly">
             <div class="card">
               <header class="card-header">
                 <p class="card-header-title">
@@ -100,6 +100,164 @@
                     {{player.SummonerName}} and <router-link v-bind:to="/players/ + player.BestAlly.Player.PlayerId">{{player.BestAlly.Player.SummonerName}}</router-link> are <strong>the best of allies.</strong>
                     <br>
                     <small>{{player.SummonerName}} wins the most when {{player.BestAlly.Player.SummonerName}} is on their team.</small>
+                  </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-narrow" v-if="player.Rival">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  It Doesn't Have to Be This Way
+                </p>
+              </header>
+              <div class="card-image">
+                <nav class="level">
+                  <div class="level-item">
+                    <figure class="image is-64x64">
+                      <img
+                        class="is-rounded"
+                        v-bind:src="
+                          'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/profileicon/' +
+                            player.LeagueAccount.profileIconId +
+                            '.png'
+                        "
+                        alt="Summoner Icon"
+                      />
+                    </figure>
+                    <b-icon icon="flash" size="is-large" type="is-warning"/>
+                    <figure class="image is-64x64">
+                      <img
+                        class="is-rounded"
+                        v-bind:src="
+                          'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/profileicon/' +
+                            player.Rival.Player.LeagueAccount.profileIconId +
+                            '.png'
+                        "
+                        alt="Summoner Icon"
+                      />
+                    </figure>
+                  </div>
+                </nav>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="has-centered-text">
+                    {{player.SummonerName}} and <router-link v-bind:to="/players/ + player.Rival.Player.PlayerId">{{player.Rival.Player.SummonerName}}</router-link> are <strong>Fated Rivals.</strong>
+                    <br>
+                    <small>{{player.SummonerName}} plays against {{player.Rival.Player.SummonerName}} in a majority of matches.</small>
+                  </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-narrow" v-if="player.PlayerBadges.indexOf('Captain') >= 0">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  I'm The Captain Now
+                </p>
+              </header>
+              <div class="card-image">
+                <nav class="level">
+                  <div class="level-item">
+                    <figure class="image is-64x64">
+                      <img
+                        class="is-rounded"
+                        v-bind:src="
+                          'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/profileicon/' +
+                            player.LeagueAccount.profileIconId +
+                            '.png'
+                        "
+                        alt="Summoner Icon"
+                      />
+                    </figure>
+                    <b-icon icon="bullhorn" size="is-large" type="is-info"/>
+                    <b-icon icon="account-multiple" size="is-large" type="is-info"/>
+                  </div>
+                </nav>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="has-centered-text">
+                    {{player.SummonerName}} has lead their team to victory numerous times.
+                  </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-narrow" v-if="player.PlayerBadges.indexOf('MVP') >= 0">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  Hate Me Cuz They Ain't Me
+                </p>
+              </header>
+              <div class="card-image">
+                <nav class="level">
+                  <div class="level-item">
+                    <figure class="image is-64x64">
+                      <img
+                        class="is-rounded"
+                        v-bind:src="
+                          'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/profileicon/' +
+                            player.LeagueAccount.profileIconId +
+                            '.png'
+                        "
+                        alt="Summoner Icon"
+                      />
+                    </figure>
+                    <b-icon icon="star-circle" size="is-large" type="is-info"/>
+                  </div>
+                </nav>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="has-centered-text">
+                    {{player.SummonerName}} is high on the priority list for captains.
+                  </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-narrow" v-if="player.PlayerBadges.indexOf('Role-Top') >= 0">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  Role Player - Top
+                </p>
+              </header>
+              <div class="card-image">
+                <nav class="level">
+                  <div class="level-item">
+                    <figure class="image is-64x64">
+                      <img
+                        class="is-rounded"
+                        v-bind:src="
+                          'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/profileicon/' +
+                            player.LeagueAccount.profileIconId +
+                            '.png'
+                        "
+                        alt="Summoner Icon"
+                      />
+                    </figure>
+                    <b-icon icon="star-circle" size="is-large" type="is-info"/>
+                  </div>
+                </nav>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="has-centered-text">
+                    {{player.SummonerName}} tends to get Top Lane.
                   </p>
                   </div>
                 </div>
