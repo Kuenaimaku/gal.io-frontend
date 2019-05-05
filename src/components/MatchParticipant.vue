@@ -31,7 +31,7 @@
         </figure>
       </div>
       <div class="column is-3">
-        <p class="title is-6 has-text-centered">{{participant.player.summonerName}}</p>
+        <p class="title is-6 has-text-centered"><router-link v-bind:to="/players/ + participant.player.playerId">{{participant.player.summonerName}}</router-link></p>
         <p class="subtitle is-7 has-text-centered">{{participant.player.name}}</p>
       </div>
       <div class="column is-2">
@@ -115,7 +115,7 @@
         <p class="title is-6 has-text-centered">{{participant.kills}}/{{participant.deaths}}/{{participant.assists}}</p>
       </div>
       <div class="column is-3">
-        <p class="title is-6 has-text-centered">{{participant.player.summonerName}}</p>
+        <p class="title is-6 has-text-centered"><router-link v-bind:to="/players/ + participant.player.playerId">{{participant.player.summonerName}}</router-link></p>
         <p class="subtitle is-7 has-text-centered">{{participant.player.name}}</p>
       </div>
       <div class="column is-2">

@@ -19,7 +19,7 @@
             <b-icon v-if="badge.Icon" v-bind:icon="badge.Icon" size="is-large" v-bind:type="badge.IconType"/>
             <figure v-if="badge.Image2" class="image is-64x64">
             <img class="is-rounded"
-                v-bind:src="badge.Image1"
+                v-bind:src="badge.Image2"
                 alt="Badge Image 1"
               />
             </figure>
@@ -33,7 +33,7 @@
             {{badge.PlayerName}} and <router-link v-bind:to="/players/ + badge.RelatedPlayerId">{{badge.RelatedPlayerName}}</router-link> are <strong>{{badge.Relationship}}</strong>
               <br>
             </p>
-            <small v-if="badge.Blurb1">{{badge.Player}} {{badge.Blurb1}} {{badge.RelatedPlayerName}} {{badge.Blurb2}}</small>
+            <small v-if="badge.Blurb1">{{badge.PlayerName}} {{badge.Blurb1}} {{badge.RelatedPlayerName}} {{badge.Blurb2}}</small>
           </div>
         </div>
       </div>

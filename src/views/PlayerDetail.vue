@@ -3,7 +3,7 @@
     <section class="hero is-player is-bold">
       <div class="hero-body">
         <div class="container">
-            <div class="columns is-vcentered">
+            <div class="columns is-vcentered" v-if="!player">
               <div class="column is-narrow">
                 <figure class="image is-128x128">
                   <img
@@ -56,214 +56,32 @@
         </div>
       </div>
       <div class="container" v-if="currentTab == 'badges'">
-        <div class="columns">
-          <div class="column is-narrow" v-if="player.BestAlly">
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  Together Forever
-                </p>
-              </header>
-              <div class="card-image">
-                <nav class="level">
-                  <div class="level-item">
-                    <figure class="image is-64x64">
-                      <img
-                        class="is-rounded"
-                        v-bind:src="
-                          'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/profileicon/' +
-                            player.LeagueAccount.profileIconId +
-                            '.png'
-                        "
-                        alt="Summoner Icon"
-                      />
-                    </figure>
-                    <b-icon icon="heart" size="is-large" type="is-danger"/>
-                    <figure class="image is-64x64">
-                      <img
-                        class="is-rounded"
-                        v-bind:src="
-                          'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/profileicon/' +
-                            player.BestAlly.Player.LeagueAccount.profileIconId +
-                            '.png'
-                        "
-                        alt="Summoner Icon"
-                      />
-                    </figure>
-                  </div>
-                </nav>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="has-centered-text">
-                    {{player.SummonerName}} and <router-link v-bind:to="/players/ + player.BestAlly.Player.PlayerId">{{player.BestAlly.Player.SummonerName}}</router-link> are <strong>the best of allies.</strong>
-                    <br>
-                    <small>{{player.SummonerName}} wins the most when {{player.BestAlly.Player.SummonerName}} is on their team.</small>
-                  </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="column is-narrow" v-if="player.Rival">
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  It Doesn't Have to Be This Way
-                </p>
-              </header>
-              <div class="card-image">
-                <nav class="level">
-                  <div class="level-item">
-                    <figure class="image is-64x64">
-                      <img
-                        class="is-rounded"
-                        v-bind:src="
-                          'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/profileicon/' +
-                            player.LeagueAccount.profileIconId +
-                            '.png'
-                        "
-                        alt="Summoner Icon"
-                      />
-                    </figure>
-                    <b-icon icon="flash" size="is-large" type="is-warning"/>
-                    <figure class="image is-64x64">
-                      <img
-                        class="is-rounded"
-                        v-bind:src="
-                          'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/profileicon/' +
-                            player.Rival.Player.LeagueAccount.profileIconId +
-                            '.png'
-                        "
-                        alt="Summoner Icon"
-                      />
-                    </figure>
-                  </div>
-                </nav>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="has-centered-text">
-                    {{player.SummonerName}} and <router-link v-bind:to="/players/ + player.Rival.Player.PlayerId">{{player.Rival.Player.SummonerName}}</router-link> are <strong>Fated Rivals.</strong>
-                    <br>
-                    <small>{{player.SummonerName}} plays against {{player.Rival.Player.SummonerName}} in a majority of matches.</small>
-                  </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="column is-narrow" v-if="player.PlayerBadges.indexOf('Captain') >= 0">
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  I'm The Captain Now
-                </p>
-              </header>
-              <div class="card-image">
-                <nav class="level">
-                  <div class="level-item">
-                    <figure class="image is-64x64">
-                      <img
-                        class="is-rounded"
-                        v-bind:src="
-                          'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/profileicon/' +
-                            player.LeagueAccount.profileIconId +
-                            '.png'
-                        "
-                        alt="Summoner Icon"
-                      />
-                    </figure>
-                    <b-icon icon="bullhorn" size="is-large" type="is-info"/>
-                    <b-icon icon="account-multiple" size="is-large" type="is-info"/>
-                  </div>
-                </nav>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="has-centered-text">
-                    {{player.SummonerName}} has lead their team to victory numerous times.
-                  </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="column is-narrow" v-if="player.PlayerBadges.indexOf('MVP') >= 0">
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  Hate Me Cuz They Ain't Me
-                </p>
-              </header>
-              <div class="card-image">
-                <nav class="level">
-                  <div class="level-item">
-                    <figure class="image is-64x64">
-                      <img
-                        class="is-rounded"
-                        v-bind:src="
-                          'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/profileicon/' +
-                            player.LeagueAccount.profileIconId +
-                            '.png'
-                        "
-                        alt="Summoner Icon"
-                      />
-                    </figure>
-                    <b-icon icon="star-circle" size="is-large" type="is-info"/>
-                  </div>
-                </nav>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="has-centered-text">
-                    {{player.SummonerName}} is high on the priority list for captains.
-                  </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="column is-narrow" v-if="player.PlayerBadges.indexOf('Role-Top') >= 0">
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  Role Player - Top
-                </p>
-              </header>
-              <div class="card-image">
-                <nav class="level">
-                  <div class="level-item">
-                    <figure class="image is-64x64">
-                      <img
-                        class="is-rounded"
-                        v-bind:src="
-                          'http://ddragon.leagueoflegends.com/cdn/9.8.1/img/profileicon/' +
-                            player.LeagueAccount.profileIconId +
-                            '.png'
-                        "
-                        alt="Summoner Icon"
-                      />
-                    </figure>
-                    <b-icon icon="star-circle" size="is-large" type="is-info"/>
-                  </div>
-                </nav>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="has-centered-text">
-                    {{player.SummonerName}} tends to get Top Lane.
-                  </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div v-if="player.GenericBadges">
+          <section
+            class="columns is-centered is-vcentered"
+            v-for="chunk in genericBadgeChunks"
+            v-bind:key="chunk[0].id"
+          >
+            <Badge
+              v-for="badge in chunk"
+              v-bind:key="badge.title"
+              v-bind:badge="badge"
+            ></Badge>
+          </section>
+        </div>
+        <div v-if="player.GenericBadges">
+          <h3>Related Badges</h3>
+          <section
+            class="columns is-centered is-vcentered"
+            v-for="chunk in relationalBadgeChunks"
+            v-bind:key="chunk[0].id"
+          >
+            <RelationalBadge
+              v-for="badge in chunk"
+              v-bind:key="badge.title"
+              v-bind:badge="badge"
+            ></RelationalBadge>
+          </section>
         </div>
       </div>
     <b-loading :active.sync="this.loading" :is-full-page="false"></b-loading>
@@ -274,9 +92,13 @@
 <script>
 import Match from "@/components/Match";
 
+import Badge from "@/components/GenericBadge";
+import RelationalBadge from "@/components/RelationalBadge";
+
 import _ from "lodash";
 import Api from "@/api";
 import { mapGetters } from "vuex";
+import { setTimeout } from 'timers';
 
 export default {
   name: "PlayerDetail",
@@ -304,6 +126,19 @@ export default {
         await this.fetchMatchesByPlayer();
       }
     },
+    async fetchData() {
+      try {
+        this.loading= true;
+        this.matches = null;
+        this.player = null;
+        await this.changeTab('overview');
+        const res = await Api.players.getPlayer(this.$route.params.id);
+        this.player = res;
+        this.loading = false;
+      } catch (err) {
+        console.log(err);
+      }
+    },
     async fetchMatchesByPlayer() {
         try {
           const res = await Api.matches.fetchMatchesByPlayer(this.$route.params.id);
@@ -315,10 +150,22 @@ export default {
       }
   },
   computed: {
-    ...mapGetters(["user", "loggedIn"])
+    ...mapGetters(["user", "loggedIn"]),
+    genericBadgeChunks() {
+      return _.chunk(Object.values(this.player.GenericBadges), 4);
+    },
+    relationalBadgeChunks() {
+      return _.chunk(Object.values(this.player.RelationalBadges), 3);
+    }
+  },
+  watch: {
+  // when redirect to new category_name, this will be callback
+  '$route': 'fetchData'
   },
   components: {
-    Match
+    Match,
+    Badge,
+    RelationalBadge
   }
 };
 </script>

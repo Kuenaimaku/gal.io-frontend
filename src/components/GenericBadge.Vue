@@ -1,5 +1,5 @@
 <template>
-  <div class="column is-narrow">
+  <div class="column is-3">
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
@@ -19,8 +19,8 @@
             <b-icon v-if="badge.Icon" v-bind:icon="badge.Icon" size="is-large" v-bind:type="badge.IconType"/>
             <figure v-if="badge.Image2" class="image is-64x64">
             <img class="is-rounded"
-                v-bind:src="badge.Image1"
-                alt="Badge Image 1"
+                v-bind:src="badge.Image2"
+                alt="Badge Image 2"
               />
             </figure>
           </div>
